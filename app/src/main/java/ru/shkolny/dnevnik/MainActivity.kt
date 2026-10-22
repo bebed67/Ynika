@@ -4,55 +4,33 @@ import android.app.Activity
 import android.os.Bundle
 import android.graphics.Color
 import android.view.Gravity
-import android.widget.*
+import android.widget.LinearLayout
+import android.widget.TextView
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val layout = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            gravity = Gravity.CENTER
-            setPadding(24, 24, 24, 24)
-            setBackgroundColor(Color.rgb(245, 247, 255))
-        }
+        val layout = LinearLayout(this)
+        layout.orientation = LinearLayout.VERTICAL
+        layout.gravity = Gravity.CENTER
+        layout.setPadding(24, 24, 24, 24)
+        layout.setBackgroundColor(Color.rgb(245, 247, 255))
 
-        val title = TextView(this).apply {
-            text = "📚 Школьный дневник"
-            textSize = 28f
-            setTextColor(Color.rgb(35, 55, 100))
-            gravity = Gravity.CENTER
-        }
+        val title = TextView(this)
+        title.text = "Школьный дневник"
+        title.textSize = 28f
+        title.setTextColor(Color.rgb(35, 55, 100))
+        title.gravity = Gravity.CENTER
 
-        val subtitle = TextView(this).apply {
-            text = "Твои оценки и домашние задания"
-            textSize = 16f
-            gravity = Gravity.CENTER
-        }
-
-        val gradesButton = Button(this).apply {
-            text = "📊 Мои оценки"
-            setOnClickListener {
-                showMessage("Раздел оценок скоро появится!")
-            }
-        }
-
-        val homeworkButton = Button(this).apply {
-            text = "📝 Домашние задания"
-            setOnClickListener {
-                showMessage("Раздел домашних заданий скоро появится!")
-            }
-        }
+        val subtitle = TextView(this)
+        subtitle.text = "Добро пожаловать!"
+        subtitle.textSize = 18f
+        subtitle.gravity = Gravity.CENTER
 
         layout.addView(title)
         layout.addView(subtitle)
-        layout.addView(gradesButton)
-        layout.addView(homeworkButton)
 
         setContentView(layout)
-    }
-
-    private fun showMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }
